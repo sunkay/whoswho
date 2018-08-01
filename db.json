@@ -1,0 +1,11 @@
+{
+    "employees": [
+        {"id": "23", "firstname": "Bill", "age":20, "managerId": "1"},
+        {"id": "18", "firstname": "Sam", "age":18, "managerId": "2"},
+        {"id": "20", "firstname": "Nick", "age":27, "managerId": "2"}
+    ],
+    "managers": [
+        {"id": "1", "firstname": "alan"},
+        {"id": "2", "firstname": "van"}        
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "whoswho",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "json:server": "json-server --watch db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.0.0",
+    "axios": "^0.18.0",
+    "graphql": "^0.13.2"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.0",
+    "nodemon": "^1.18.3"
+  }
+}
