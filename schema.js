@@ -6,6 +6,11 @@ module.exports = `
         managers: [Manager]
     }
 
+    type Mutation {
+        addEmployee(firstname: String, lastname: String): Employee
+        addManager(firstname: String, lastname: String): Manager
+    }
+
     type Employee{
         id: ID!,
         firstname: String!,
