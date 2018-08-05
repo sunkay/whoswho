@@ -24,9 +24,10 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 console.log("Adding sample data into DynamoDB. Please wait.");
 
 employeeData.forEach(emp => {
+  console.log("data: ", emp);
   docClient.put(
     {
-      TableName: "Employees",
+      TableName: "employees",
       Item: {
         id: emp.id,
         firstname: emp.firstname,

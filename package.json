@@ -9,7 +9,10 @@
     "watch:dev": "nodemon ./src/index.js",
     "dynamo": "java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
     "json:server": "json-server --watch ./src/db/db.json",
-    "create-db": "node ./src/db/createTable.js"
+    "create-db": "node ./src/db/createTable.js",
+    "drop-db": "node ./src/db/deleteTable.js",
+    "load-db": "node ./src/db/loadDB.js",
+    "scan-db": "node ./src/db/scanDB.js"
   },
   "author": "",
   "license": "ISC",
