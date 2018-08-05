@@ -1,15 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server');
 const axios = require('axios');
-const typeDefs = require('./schema');
-
-// Global config options for the whoswho
-const config = {
-    port: 4000,
-    url: 'http://localhost',
-    params: {
-      api_key: '4e911a064e43b9cd6fbb3137c572d89a',
-    },
-  };
+const typeDefs = require('./schema/schema');
+const config = require('./config');
 
 const resolvers = {
     Query: {
@@ -45,6 +37,7 @@ const server = new ApolloServer({
 });
 
 // Start our server with our port config
+const url = config.server.url;
 server
-  .listen({ port: config.port })
+  .listen({ port: config.server.port })
   .then(({ url }) => console.log(`🚀 app running at ${url}`));

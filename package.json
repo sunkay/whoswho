@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "json:server": "json-server --watch db.json",
-    "create-db": "node ./createTable.js"
+    "dev": "concurrently --kill-others --kill-others-on-fail 'npm run dynamo' 'npm run json:server' 'npm run watch:dev'" ,
+    "watch:dev": "nodemon ./src/index.js",
+    "dynamo": "java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
+    "json:server": "json-server --watch ./src/db/db.json",
+    "create-db": "node ./src/db/createTable.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "graphql": "^0.13.2"
   },
   "devDependencies": {
+    "concurrently": "^3.6.1",
     "json-server": "^0.14.0",
     "nodemon": "^1.18.3"
   }
