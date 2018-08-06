@@ -14,11 +14,11 @@ module.exports = {
    * Uses Dynamodb Scan employees table
    * @param {Int} limit (default = 5)
    */
-  getEmployees(limit = 5) {
-    return dynamodb.scan({ TableName: "employees", Limit: limit }).promise();
+  getManagers(limit = 5) {
+    return dynamodb.scan({ TableName: "managers", Limit: limit }).promise();
   },
 
-  getEmployee(id) {
+  getManager(id) {
     //console.log("ID", id);
     var params = {
       ExpressionAttributeValues: {
@@ -27,15 +27,15 @@ module.exports = {
         }
       },
       KeyConditionExpression: "id = :id",
-      TableName: "employees"
+      TableName: "managers"
     };
     return dynamodb.query(params).promise();
   },
 
-  addEmployee(emp) {
+  addManager(emp) {
     return docClient
       .put({
-        TableName: "employees",
+        TableName: "managers",
         ConditionExpression: "attribute_not_exists(id)",
         Item: emp
       })
@@ -47,7 +47,7 @@ module.exports = {
    *
    * @param {DynamoDB Item} emp
    */
-  getEmployeeJSON(emp) {
+  getManagerJSON(emp) {
     return {
       id: emp.id.S,
       firstname: emp.firstname.S,

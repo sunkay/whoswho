@@ -31,7 +31,7 @@ var managers = {
     { AttributeName: "firstname", KeyType: "RANGE" } //Sort key
   ],
   AttributeDefinitions: [
-    { AttributeName: "id", AttributeType: "N" },
+    { AttributeName: "id", AttributeType: "S" },
     { AttributeName: "firstname", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
