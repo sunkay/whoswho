@@ -1,18 +1,14 @@
-const { ApolloServer, gql } = require("apollo-server");
-const typeDefs = require("./schema/schema");
-const config = require("./config");
-const resolvers = require("./resolvers");
+const employee = require("../models/employee");
 
-/*
-const resolvers = {
+module.exports = {
   Query: {
     employees: () => {
-      return employees
+      return employee
         .getEmployees()
         .then(data => {
           var items = [];
           data.Items.forEach(item => {
-            items.push(employees.getEmployeeJSON(item));
+            items.push(employee.getEmployeeJSON(item));
           });
           return items;
         })
@@ -30,10 +26,10 @@ const resolvers = {
         .then(resp => resp.data);
     },
     employee: (root, args) => {
-      return employees
+      return employee
         .getEmployee(args.id)
         .then(data => {
-          return employees.getEmployeeJSON(data.Items[0]);
+          return employee.getEmployeeJSON(data.Items[0]);
         })
         .catch(err => {
           console.error(
@@ -48,24 +44,5 @@ const resolvers = {
         .get(`http://localhost:3000/managers/${args.id}`)
         .then(resp => resp.data);
     }
-  },
-
-  Mutation: {
-    addEmployee(_, args) {
-      console.log(" args: ", args);
-      return;
-    }
   }
 };
-*/
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-});
-
-// Start our server with our port config
-const url = config.server.url;
-server
-  .listen({ port: config.server.port })
-  .then(({ url }) => console.log(`🚀 app running at ${url}`));
