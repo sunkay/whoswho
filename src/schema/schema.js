@@ -9,6 +9,8 @@ module.exports = `
     type Mutation {
         addEmployee(id: String, firstname: String, lastname: String): Employee
         addManager(id: String, firstname: String, lastname: String): Manager
+        deleteEmployee(id: String, firstname: String): Employee
+        deleteManager(id: String, firstname: String): Manager
     }
 
     type Employee{

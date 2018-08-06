@@ -42,6 +42,18 @@ module.exports = {
       .promise();
   },
 
+  deleteManager(id, firstname) {
+    var params = {
+      TableName: "managers",
+      Key: {
+        id: id,
+        firstname: firstname
+      }
+    };
+    return docClient.delete(params).promise();
+  },
+
+
   /**
    * Return simplified JSON representation of the dynamodb Item
    *

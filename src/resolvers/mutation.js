@@ -36,6 +36,40 @@ module.exports = {
           );
           return {};
         });
-    }
+    },
+    deleteEmployee: (_, args) => {
+      console.log("deleteing employee with id: ", args.id, args.firstname);
+      return employee
+        .deleteEmployee(args.id, args.firstname)
+        .then(data => {
+          return;
+        })
+        .catch(err => {
+          console.error(
+            "Unable to delete employee: ",
+            args.id,
+            ". Error JSON:",
+            JSON.stringify(err, null, 2)
+          );
+          return {};
+        });
+    },
+    deleteManager: (_, args) => {
+      console.log("deleteing manager with id: ", args.id, args.firstname);
+      return manager
+        .deleteManager(args.id, args.firstname)
+        .then(data => {
+          return;
+        })
+        .catch(err => {
+          console.error(
+            "Unable to delete manager: ",
+            args.id,
+            ". Error JSON:",
+            JSON.stringify(err, null, 2)
+          );
+          return {};
+        });
+    },
   }
 };
