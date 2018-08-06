@@ -1,10 +1,10 @@
 const query = require("./query");
 //const employees = require('./employees');
-//const mutation = require('./mutation');
+const mutation = require("./mutation");
 
 module.exports = {
-  ...query
+  ...query,
   //...movie,
   // ...cast,
-  //...mutation,
+  ...mutation
 };

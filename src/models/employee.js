@@ -7,6 +7,7 @@ AWS.config.update({
 });
 
 var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {
   /**
@@ -29,6 +30,15 @@ module.exports = {
       TableName: "employees"
     };
     return dynamodb.query(params).promise();
+  },
+
+  addEmployee(emp) {
+    return docClient
+      .put({
+        TableName: "employees",
+        Item: emp
+      })
+      .promise();
   },
 
   /**

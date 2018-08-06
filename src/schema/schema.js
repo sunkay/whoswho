@@ -7,8 +7,8 @@ module.exports = `
     }
 
     type Mutation {
-        addEmployee(firstname: String, lastname: String): Employee
-        addManager(firstname: String, lastname: String): Manager
+        addEmployee(id: String, firstname: String, lastname: String): Employee
+        addManager(id: String, firstname: String, lastname: String): Manager
     }
 
     type Employee{
