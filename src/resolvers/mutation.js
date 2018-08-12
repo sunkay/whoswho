@@ -1,13 +1,16 @@
+const { ApolloError } = require("apollo-server");
+
 var employee = require("../models/employee");
 var manager = require("../models/manager");
 
 module.exports = {
   Mutation: {
-    addEmployee: (root, emp) => {
+    addEmployee: (root, args) => {
+      console.log("input:", args)
       return employee
-        .addEmployee(emp)
+        .addEmployee(args.input)
         .then(data => {
-          return emp;
+          return {id: args.input.id};
         })
         .catch(err => {
           console.error(
@@ -16,16 +19,16 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return {};
+          throw new ApolloError("Unable to add employee", 20, err);
         });
     },
 
-    addManager: (root, emp) => {
-      console.log(emp);
+    addManager: (root, args) => {
+      console.log(args.input);
       return manager
-        .addManager(emp)
+        .addManager(args.input)
         .then(data => {
-          return emp;
+          return {id: args.input.id};
         })
         .catch(err => {
           console.error(
@@ -34,7 +37,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return {};
+          throw new ApolloError("Unable to add manager", 20, err);
         });
     },
     deleteEmployee: (_, args) => {
@@ -42,7 +45,7 @@ module.exports = {
       return employee
         .deleteEmployee(args.id, args.firstname)
         .then(data => {
-          return;
+          return args;
         })
         .catch(err => {
           console.error(
@@ -51,7 +54,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return {};
+          throw new ApolloError("Unable to delete employee", 20, err);
         });
     },
     deleteManager: (_, args) => {
@@ -59,7 +62,7 @@ module.exports = {
       return manager
         .deleteManager(args.id, args.firstname)
         .then(data => {
-          return;
+          return args;
         })
         .catch(err => {
           console.error(
@@ -68,7 +71,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return {};
+          throw new ApolloError("Unable to add manager", 20, err);
         });
     },
   }

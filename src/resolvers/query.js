@@ -1,3 +1,5 @@
+const { ApolloError } = require("apollo-server");
+
 const employee = require("../models/employee");
 const manager = require("../models/manager");
 
@@ -18,7 +20,7 @@ module.exports = {
             "Unable to scan table. Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return [];
+          throw new ApolloError("Unable to scan table...");
         });
     },
     managers: () => {
@@ -36,7 +38,7 @@ module.exports = {
             "Unable to scan table. Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return [];
+          throw new ApolloError("Unable to scan table...");
         });
     },
     employee: (root, args) => {
@@ -50,7 +52,7 @@ module.exports = {
             "Unable to get employee. Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return [];
+          throw new ApolloError(`cannot find user ${args.id}`, 10, args);
         });
     },
     manager: (root, args) => {
@@ -64,7 +66,7 @@ module.exports = {
             "Unable to get manager. Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          return [];
+          throw new ApolloError(`cannot find user ${args.id}`, 10, args);
         });
     }
   }

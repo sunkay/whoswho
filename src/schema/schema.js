@@ -7,10 +7,21 @@ module.exports = `
     }
 
     type Mutation {
-        addEmployee(id: String, firstname: String, lastname: String): Employee
-        addManager(id: String, firstname: String, lastname: String): Manager
+        addEmployee(input: AddEmployeeInput): AddEmployeePayload
+        # manager is another employee
+        addManager(input: AddEmployeeInput): AddEmployeePayload
         deleteEmployee(id: String, firstname: String): Employee
         deleteManager(id: String, firstname: String): Manager
+    }
+
+    input AddEmployeeInput{
+        id: String!, 
+        firstname: String!, 
+        lastname: String!,        
+    }
+
+    type AddEmployeePayload{
+        id: String, 
     }
 
     type Employee{
