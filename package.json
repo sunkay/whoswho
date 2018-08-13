@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently --kill-others --kill-others-on-fail 'npm run dynamo' 'npm run json:server' 'npm run watch:dev'" ,
+    "dev": "concurrently --kill-others --kill-others-on-fail 'npm run dynamo' 'npm run watch:dev'" ,
     "watch:dev": "nodemon ./src/index.js",
     "dynamo": "java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
     "json:server": "json-server --watch ./src/db/db.json",
