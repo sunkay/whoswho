@@ -27,14 +27,7 @@ module.exports = {
       return employee
         .allEmployees(args.filter)
         .then(data => {
-          var items = [];
-          data.Items.forEach(item => {
-            console.log(item)
-            items.push(employee.getEmployeeJSON(item));
-            console.log(items)
-          })
-          console.log(items)
-          return items;
+          return data.Items;
         })
         .catch(err => {
           console.error(
