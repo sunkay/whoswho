@@ -2,7 +2,7 @@ const employees = require("../models/employee");
 const manager = require("../models/manager");
 
 employees
-  .getEmployees()
+  .allEmployees("s")
   .then(data => {
     console.log(data.Items);
   })
