@@ -1,5 +1,6 @@
 module.exports = `
     type Query {
+        allEmployees(filter: String!): [Employee]
         employee(id: String): Employee 
         manager(id: String): Manager
         employees: [Employee]

@@ -23,6 +23,20 @@ module.exports = {
           throw new ApolloError("Unable to scan table...");
         });
     },
+    allEmployees: (root, args) => {
+      return employee
+        .allEmployees(args.filter)
+        .then(data => {
+          return data.Items;
+        })
+        .catch(err => {
+          console.error(
+            "Unable to scan table. Error JSON:",
+            JSON.stringify(err, null, 2)
+          );
+          throw new ApolloError("Unable to scan table...");
+        });
+    },
     managers: () => {
       return manager
         .getManagers()

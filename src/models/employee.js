@@ -18,6 +18,21 @@ module.exports = {
     return dynamodb.scan({ TableName: "employees", Limit: limit }).promise();
   },
 
+  allEmployees(filter){
+    var params = {
+      TableName: "employees",
+      FilterExpression: "contains(#firstname, :firstname)",
+      ExpressionAttributeNames: {
+        "#firstname": "firstname",
+      },
+      ExpressionAttributeValues: {
+        ":firstname": filter
+      }
+    };
+
+    return docClient.scan(params).promise();
+  },
+
   getEmployee(id) {
     //console.log("ID", id);
     var params = {
