@@ -24,7 +24,8 @@ module.exports = {
         });
     },
     allEmployees: (root, args) => {
-      //console.log("args",args);
+      //console.log("args",args);]
+      if(args.filter.length == 0) return [];
       return employee
         .allEmployees(args.filter)
         .then(data => {
