@@ -24,9 +24,11 @@ module.exports = {
         });
     },
     allEmployees: (root, args) => {
+      //console.log("args",args);
       return employee
         .allEmployees(args.filter)
         .then(data => {
+          //console.log("items",data.Items);
           return data.Items;
         })
         .catch(err => {
