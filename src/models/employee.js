@@ -21,12 +21,19 @@ module.exports = {
   allEmployees(filter){
     var params = {
       TableName: "employees",
-      FilterExpression: "contains(#firstname, :firstname)",
+      FilterExpression: "contains(#firstname, :firstname) OR \
+                         contains(#lastname, :lastname) OR \
+                         contains(#firstname, :firstnameUpper) OR \
+                         contains(#lastname, :lastnameUpper)",
       ExpressionAttributeNames: {
         "#firstname": "firstname",
+        "#lastname": "lastname"
       },
       ExpressionAttributeValues: {
-        ":firstname": filter
+        ":firstname": filter.toLowerCase(),
+        ":lastname": filter.toLowerCase(),
+        ":firstnameUpper": filter.toUpperCase(),
+        ":lastnameUpper": filter.toUpperCase(),
       }
     };
 
