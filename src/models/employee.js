@@ -14,7 +14,7 @@ module.exports = {
    * Uses Dynamodb Scan employees table
    * @param {Int} limit (default = 5)
    */
-  getEmployees(limit = 5) {
+  getEmployees(limit = 50) {
     return dynamodb.scan({ TableName: "employees", Limit: limit }).promise();
   },
 

@@ -15,7 +15,7 @@ module.exports = {
         .catch(err => {
           console.error(
             "Unable to add employee",
-            emp.title,
+            args.input,
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
