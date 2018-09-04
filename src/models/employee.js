@@ -64,6 +64,23 @@ module.exports = {
       .promise();
   },
 
+  updateEmployee(emp){
+    return docClient
+      .update({
+        TableName: "employees",
+        Key: {
+          id: emp.id,
+          firstname: emp.firstname
+        },
+        UpdateExpression: "set firstname = :fn, lastname = :ln",
+        ExpressionAttributeValues:{
+          ":fn": emp.firstname,
+          ":ln": emp.lastname
+        }
+      })
+      .promise();
+  },
+
   deleteEmployee(id, firstname) {
     var params = {
       TableName: "employees",

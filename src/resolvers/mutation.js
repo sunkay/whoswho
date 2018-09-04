@@ -22,7 +22,28 @@ module.exports = {
           throw new ApolloError("Unable to add employee", 20, err);
         });
     },
-
+    updateEmployee: (root, args) => {
+      console.log("mutation updateEmployee args:", args);
+      return employee
+        .updateEmployee(args.input)
+        .then(data => {
+          console.log("update:data: ",data);
+          return {
+            id: args.input.id,
+            firstname: data.firstname,
+            lastname: data.lastname
+          }
+        })
+        .catch(err => {
+          console.error(
+            "Unable to update employee",
+            args.input,
+            ". Error JSON:",
+            JSON.stringify(err, null, 2)
+          );
+          throw new ApolloError("Unable to update employee", 21, err);
+        })
+    },
     addManager: (root, args) => {
       console.log(args.input);
       return manager
@@ -37,7 +58,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          throw new ApolloError("Unable to add manager", 20, err);
+          throw new ApolloError("Unable to add manager", 22, err);
         });
     },
     deleteEmployee: (_, args) => {
@@ -54,7 +75,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          throw new ApolloError("Unable to delete employee", 20, err);
+          throw new ApolloError("Unable to delete employee", 23, err);
         });
     },
     deleteManager: (_, args) => {
@@ -71,7 +92,7 @@ module.exports = {
             ". Error JSON:",
             JSON.stringify(err, null, 2)
           );
-          throw new ApolloError("Unable to add manager", 20, err);
+          throw new ApolloError("Unable to add manager", 24, err);
         });
     },
   }

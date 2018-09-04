@@ -9,9 +9,11 @@ module.exports = `
 
     type Mutation {
         addEmployee(input: AddEmployeeInput): AddEmployeePayload
+        updateEmployee(input: AddEmployeeInput): Employee
+        deleteEmployee(id: String, firstname: String): Employee
+
         # manager is another employee
         addManager(input: AddEmployeeInput): AddEmployeePayload
-        deleteEmployee(id: String, firstname: String): Employee
         deleteManager(id: String, firstname: String): Manager
     }
 
