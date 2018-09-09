@@ -31,8 +31,8 @@
     "nodemon": "^1.18.3"
   },
   "jest": {
-    "bail": true,
-    "verbose": true,
+    "bail": false,
+    "verbose": false,
     "testMatch": [
       "<rootDir>/**/*.test.js"
     ]

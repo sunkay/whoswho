@@ -44,14 +44,12 @@ module.exports = {
     //console.log("ID", id);
     var params = {
       ExpressionAttributeValues: {
-        ":id": {
-          S: id
-        }
+        ":id": id
       },
       KeyConditionExpression: "id = :id",
       TableName: "employees"
     };
-    return dynamodb.query(params).promise();
+    return docClient.query(params).promise();
   },
 
   addEmployee(emp) {
@@ -59,6 +57,7 @@ module.exports = {
       .put({
         TableName: "employees",
         ConditionExpression: "attribute_not_exists(id)",
+        ReturnValues: "ALL_OLD",
         Item: emp
       })
       .promise();
@@ -89,7 +88,6 @@ module.exports = {
         firstname: firstname
       }
     };
-    console.log("params: ", params);
     return docClient.delete(params).promise();
   },
 
