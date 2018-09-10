@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --watch",
     "dev": "concurrently --kill-others --kill-others-on-fail 'npm run dynamo' 'npm run watch:dev'",
     "watch:dev": "nodemon ./src/index.js",
     "dynamo": "java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
@@ -31,7 +31,7 @@
     "nodemon": "^1.18.3"
   },
   "jest": {
-    "bail": false,
+    "bail": true,
     "verbose": false,
     "testMatch": [
       "<rootDir>/**/*.test.js"
