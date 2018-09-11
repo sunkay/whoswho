@@ -6,7 +6,7 @@ var manager = require("../models/manager");
 module.exports = {
   Mutation: {
     addEmployee: (root, args) => {
-      console.log("input:", args)
+      //console.log("input:", args)
       return employee
         .addEmployee(args.input)
         .then(data => {
