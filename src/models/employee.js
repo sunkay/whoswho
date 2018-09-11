@@ -6,7 +6,6 @@ AWS.config.update({
   endpoint: config.dynamodb.endpoint
 });
 
-var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
    * @param {Int} limit (default = 5)
    */
   getEmployees(limit = 50) {
-    return dynamodb.scan({ TableName: "employees", Limit: limit }).promise();
+    return docClient.scan({ TableName: "employees", Limit: limit }).promise();
   },
 
   allEmployees(filter){
@@ -41,7 +40,7 @@ module.exports = {
   },
 
   getEmployee(id) {
-    //console.log("ID", id);
+    console.log("ID", id);
     var params = {
       ExpressionAttributeValues: {
         ":id": id
@@ -69,7 +68,6 @@ module.exports = {
         TableName: "employees",
         Key: {
           id: emp.id,
-          firstname: emp.firstname
         },
         UpdateExpression: "set firstname = :fn, lastname = :ln",
         ExpressionAttributeValues:{
@@ -85,7 +83,6 @@ module.exports = {
       TableName: "employees",
       Key: {
         id: id,
-        firstname: firstname
       }
     };
     return docClient.delete(params).promise();
