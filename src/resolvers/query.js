@@ -9,11 +9,7 @@ module.exports = {
       return employee
         .getEmployees()
         .then(data => {
-          var items = [];
-          data.Items.forEach(item => {
-            items.push(employee.getEmployeeJSON(item));
-          });
-          return items;
+         return data.Items;
         })
         .catch(err => {
           console.error(
@@ -62,7 +58,7 @@ module.exports = {
       return employee
         .getEmployee(args.id)
         .then(data => {
-          return employee.getEmployeeJSON(data.Items[0]);
+          return data.Items[0];
         })
         .catch(err => {
           console.error(
