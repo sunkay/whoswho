@@ -12,11 +12,9 @@ var employees = {
   TableName: "employees",
   KeySchema: [
     { AttributeName: "id", KeyType: "HASH" }, //Partition key
-    { AttributeName: "firstname", KeyType: "RANGE" } //Sort key
   ],
   AttributeDefinitions: [
     { AttributeName: "id", AttributeType: "S" },
-    { AttributeName: "firstname", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
@@ -28,11 +26,9 @@ var managers = {
   TableName: "managers",
   KeySchema: [
     { AttributeName: "id", KeyType: "HASH" }, //Partition key
-    { AttributeName: "firstname", KeyType: "RANGE" } //Sort key
   ],
   AttributeDefinitions: [
     { AttributeName: "id", AttributeType: "S" },
-    { AttributeName: "firstname", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
