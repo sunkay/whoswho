@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test jest --watch",
     "dev": "concurrently --kill-others --kill-others-on-fail 'npm run dynamo' 'npm run watch:dev'",
     "watch:dev": "nodemon ./src/index.js",
-    "dynamo": "java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
+    "dynamo": "AWS_SECRET_ACCESS_KEY=access_key AWS_SECRET_ACCESS_KEY=access_key java -Djava.library.path=~/dynamodb_local_latest/DynamoDBLocal_lib/ -jar ~/dynamodb_local_latest/DynamoDBLocal.jar",
     "json:server": "json-server --watch ./src/db/db.json",
     "create-db": "node ./src/db/createTable.js",
     "drop-db": "node ./src/db/deleteTable.js",
