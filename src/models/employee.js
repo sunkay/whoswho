@@ -70,6 +70,7 @@ module.exports = {
           id: emp.id,
         },
         UpdateExpression: "set firstname = :fn, lastname = :ln",
+        ReturnValues: "ALL_NEW",
         ExpressionAttributeValues:{
           ":fn": emp.firstname,
           ":ln": emp.lastname

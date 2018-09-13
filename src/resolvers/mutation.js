@@ -30,8 +30,8 @@ module.exports = {
           console.log("update:data: ",data);
           return {
             id: args.input.id,
-            firstname: data.firstname,
-            lastname: data.lastname
+            firstname: data.Attributes.firstname,
+            lastname: data.Attributes.lastname
           }
         })
         .catch(err => {
